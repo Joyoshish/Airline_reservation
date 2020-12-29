@@ -16,7 +16,11 @@ html {
   overflow: hidden;
   text-align: center;
   border-bottom: 5px solid #d8d8d8;
-  &:before {
+  
+  
+}
+
+.cockpit::before{
     content: "";
     display: block;
     position: absolute;
@@ -28,17 +32,20 @@ html {
     border-right: 5px solid #d8d8d8;
     border-left: 5px solid #d8d8d8;
   }
-  h1 {
+
+  .cockpit h1 {
     width: 60%;
     margin: 100px auto 35px auto;
   }
-}
 
 .exit {
   position: relative;
   height: 50px;
-  &:before,
-  &:after {
+  
+ 
+}
+
+.exit::before {
     content: "EXIT";
     font-size: 14px;
     line-height: 18px;
@@ -51,13 +58,26 @@ html {
     top: 50%;
     transform: translate(0, -50%);
   }
-  &:before {
+.exit::after{
+  content: "EXIT";
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0px 2px;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    display: block;
+    position: absolute;
+    background: green;
+    color: white;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.exit::before {
     left: 0;
   }
-  &:after {
+.exit::after {
     right: 0;
   }
-}
 
 .fuselage {
   border-right: 5px solid #d8d8d8;
@@ -85,43 +105,24 @@ ol {
   display: flex;
   flex: 0 0 14.28571428571429%;
   padding: 5px;
-  position: relative;  
-  &:nth-child(3) {
-    margin-right: 14.28571428571429%;
-  }
-  input[type=checkbox] {
+  position: relative;      
+}
+
+
+
+.seat input[type=checkbox] {
     position: absolute;
     opacity: 0;
   }
-  input[type=checkbox]:checked {
-    + label {
+.seat input[type=checkbox]:checked + label {
       background: #bada55;      
       -webkit-animation-name: rubberBand;
           animation-name: rubberBand;
       animation-duration: 300ms;
       animation-fill-mode: both;
-    }
   }
-  input[type=checkbox]:disabled {
-    + label {
-      background: #dddddd;
-      text-indent: -9999px;
-      overflow: hidden;
-      &:after {
-        content: "X";
-        text-indent: 0;
-        position: absolute;
-        top: 4px;
-        left: 50%;
-        transform: translate(-50%, 0%);
-      }
-      &:hover {
-        box-shadow: none;
-        cursor: not-allowed;
-      }
-    }
-  }
-  label {    
+
+  .seat label {    
     display: block;
     position: relative;    
     width: 100%;    
@@ -135,7 +136,11 @@ ol {
     animation-duration: 300ms;
     animation-fill-mode: both;
     
-    &:before {
+    
+    
+    
+  }
+  .seat label::before {
       content: "";
       position: absolute;
       width: 75%;
@@ -146,13 +151,10 @@ ol {
       background: rgba(255,255,255,.4);
       border-radius: 3px;
     }
-    &:hover {
+  .seat label::hover {
       cursor: pointer;
       box-shadow: 0 0 0px 2px #5C6AFF;
     }
-    
-  }
-}
 
 @-webkit-keyframes rubberBand {
   0% {
