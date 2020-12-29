@@ -98,7 +98,7 @@ ol {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;  
+  justify-content: center;  
 }
 
 .seat {
