@@ -1,0 +1,28 @@
+[
+    {
+        "tno":"15754425947",
+        "source":"Kolkata",
+        "destination":"Port Blair",
+        "flight name":"Airbus A340",
+        "departure":"10\/12\/2019 02:35:00",
+        "arrival":"10\/12\/2019 05:55:00",
+        "fare":"11000",
+        "contact number":"1234567890",
+        "email":"subham@gmail.com",
+        "passengers":
+        [
+            {
+                "fname":"ABC",
+                "lname":"DEF",
+                "age":"20",
+                "gender":"Male"
+            },
+            {
+                "fname":"QWE",
+                "lname":"RTY",
+                "age":"21",
+                "gender":"Male"
+            }
+        ]
+    }
+]

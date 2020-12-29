@@ -1,0 +1,164 @@
+-- phpMyAdmin SQL Dump
+-- version 3.2.0.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Dec 04, 2019 at 11:28 AM
+-- Server version: 5.1.36
+-- PHP Version: 5.3.0
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `airline_reservation`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `airport`
+--
+
+CREATE TABLE IF NOT EXISTS `airport` (
+  `ANo` varchar(10) NOT NULL,
+  `AName` varchar(50) NOT NULL,
+  PRIMARY KEY (`ANo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `airport`
+--
+
+INSERT INTO `airport` (`ANo`, `AName`) VALUES
+('0000000001', 'Kolkata'),
+('0000000002', 'Delhi'),
+('0000000003', 'Ahmedabad'),
+('0000000004', 'Chennai'),
+('0000000005', 'Bangalore'),
+('0000000006', 'Port Blair'),
+('0000000007', 'Mumbai');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+CREATE TABLE IF NOT EXISTS `customer` (
+  `CNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Fname` varchar(50) NOT NULL,
+  `Lname` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  PRIMARY KEY (`Email`),
+  UNIQUE KEY `CNo` (`CNo`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`CNo`, `Fname`, `Lname`, `Email`, `Password`) VALUES
+(6, 'Subham', 'Kumar', 'subham@gmail.com', 'qwerty'),
+(5, 'rak', 'rak', 'raktimmalakar2015@gmail.com', 'qwe'),
+(7, 'Soumajay', 'Das', 'soumajaydas@gmail.com', 'qwerty');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `flight`
+--
+
+CREATE TABLE IF NOT EXISTS `flight` (
+  `FNo` varchar(10) NOT NULL,
+  `Fname` varchar(50) NOT NULL,
+  `Tseats` smallint(6) NOT NULL,
+  PRIMARY KEY (`FNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `flight`
+--
+
+INSERT INTO `flight` (`FNo`, `Fname`, `Tseats`) VALUES
+('0000000001', 'Boeing 747', 400),
+('0000000002', 'Boeing 767', 380),
+('0000000003', 'Boeing 777', 100),
+('0000000004', 'Boeing 787', 150),
+('0000000005', 'Airbus A300', 50),
+('0000000006', 'Airbus A310', 100),
+('0000000008', 'Airbus A330', 150),
+('0000000009', 'Airbus A340', 120),
+('0000000010', 'Lockheed L-1011 TriStar', 30);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation`
+--
+
+CREATE TABLE IF NOT EXISTS `reservation` (
+  `TNo` varchar(20) NOT NULL,
+  `ScNo` varchar(20) NOT NULL,
+  `CNo` varchar(20) NOT NULL,
+  `Pcount` smallint(6) NOT NULL,
+  PRIMARY KEY (`TNo`),
+  KEY `ScNo` (`ScNo`),
+  KEY `CNo` (`CNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reservation`
+--
+
+INSERT INTO `reservation` (`TNo`, `ScNo`, `CNo`, `Pcount`) VALUES
+('15754425947', '1575437668', '7', 2),
+('15754380515', '1575437711', '5', 2),
+('15754329355', '1572964987', '5', 1),
+('15753662985', '1572964987', '5', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule`
+--
+
+CREATE TABLE IF NOT EXISTS `schedule` (
+  `ScNo` varchar(20) NOT NULL,
+  `FNo` varchar(10) NOT NULL,
+  `dept_timestamp` varchar(20) NOT NULL,
+  `arrival_timestamp` varchar(20) NOT NULL,
+  `src` varchar(10) NOT NULL,
+  `dest` varchar(10) NOT NULL,
+  `Fare` int(11) NOT NULL,
+  PRIMARY KEY (`ScNo`),
+  KEY `FNo` (`FNo`),
+  KEY `src` (`src`),
+  KEY `dest` (`dest`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`ScNo`, `FNo`, `dept_timestamp`, `arrival_timestamp`, `src`, `dest`, `Fare`) VALUES
+('1572964987', '0000000003', '1574821800', '1574830800', '0000000001', '0000000004', 2500),
+('1572965037', '0000000001', '1574829000', '1574848800', '0000000003', '0000000007', 3000),
+('1575437668', '0000000009', '1575945300', '1575957300', '0000000001', '0000000006', 5500),
+('1575437711', '0000000006', '1575956100', '1575966600', '0000000006', '0000000001', 7000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `waiting`
+--
+
+CREATE TABLE IF NOT EXISTS `waiting` (
+  `TNo` varchar(20) NOT NULL,
+  KEY `TNo` (`TNo`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `waiting`
+--
+
